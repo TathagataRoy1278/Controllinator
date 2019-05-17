@@ -3,7 +3,8 @@ import socket
 HEADERSIZE = 10
 
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-s.connect(("192.168.43.205",1257))
+print("enter your IP and PORT")
+s.connect((input(),int(input())))
 
 while True:
     
