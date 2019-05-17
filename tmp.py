@@ -13,20 +13,23 @@ def getcommand(clientsocket):
                 os.system(clientsocket.recv(length).decode("utf-8"))
 
 HEADERSIZE = 10
-
+s1 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s1.connect(("8.8.8.8", 80))
+IP = (s1.getsockname()[0])
+PORT = 1296
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-s.bind(("192.168.43.205",1257))
+s.bind((IP,1296))
+print(f"connect clien.py to {IP}"+f"and PORT {PORT}" )
 s.listen(5)
 
 
 msg = "you just got connected"
 while True:
-    print("ds")
     clientsocket,address = s.accept()
-    print("CS")
     print(f"connection from {address} has been established")
     msg = f"{len(msg):<{HEADERSIZE}}"+msg
     clientsocket.send(bytes(msg,"utf-8"))
     threading.Thread(target = getcommand, args = [clientsocket]).start()
+
