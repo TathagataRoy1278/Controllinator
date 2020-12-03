@@ -1,5 +1,5 @@
 # Controllinator
-This is a server application to control your computer using your phone
+This is an application to control your computer using your phone
 
 **MAKE SURE YOUR COMPUTER AND LAPTOP ARE CONNECTED ON THE SAME NETWORK**
 
